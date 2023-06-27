@@ -132,6 +132,7 @@ def main():
     bomb = Bomb((255, 0, 0), 10)
 
     clock = pg.time.Clock()
+    a = 0
     tmr = 0
     while True:
         for event in pg.event.get():
