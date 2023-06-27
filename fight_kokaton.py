@@ -107,7 +107,16 @@ class Bomb:
         self.rct.move_ip(self.vx, self.vy)
         screen.blit(self.img, self.rct)
 
-
+class Beam:
+    """
+    こうかとんが放つビームに関するクラス
+    """
+    def __init__(self,bird:Bird):
+            self.img = pg.image.load(f"ex03/fig/baem.png") 
+            self.rct = self.img.get_rect()
+            self.rct.centerx = bird.rct.centerx 
+            self.rct.centery = bird.rct.ceentery
+            self.vx, self.vy = +5, 0
 def main():
     pg.display.set_caption("たたかえ！こうかとん")
     screen = pg.display.set_mode((WIDTH, HEIGHT))    
