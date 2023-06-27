@@ -139,6 +139,21 @@ class Beam:
         self.rct.move_ip(self.vx, self.vy)
         screen.blit(self.img, self.rct)
 
+class Score:
+    """
+    クラスを表示するスコア
+    """
+    def __init__(self):   
+        self.font = pg.font.SysFont("hgp創英角ポップ体",30)
+        score = 0
+        self.img = self.font.render("スコア：score",0,(0,0,255))
+    def update(self, screen: pg.Surface):
+        self.img = self.font.render("スコア：score",0,(0,0,255))
+        screen.blit(self.img,[100,50])
+
+
+
+
 
 def main():
     pg.display.set_caption("たたかえ！こうかとん")
