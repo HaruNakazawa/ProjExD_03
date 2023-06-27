@@ -141,7 +141,6 @@ def main():
     beam = None
 
     clock = pg.time.Clock()
-    a = 0
     tmr = 0
     while True:
         for event in pg.event.get():
