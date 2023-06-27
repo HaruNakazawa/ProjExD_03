@@ -141,6 +141,9 @@ class Beam:
 
 
 def main():
+    """
+    ゲームを動かすための処理
+    """
     pg.display.set_caption("たたかえ！こうかとん")
     screen = pg.display.set_mode((WIDTH, HEIGHT))    
     bg_img = pg.image.load("ex03/fig/pg_bg.jpg")
@@ -155,7 +158,7 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 return
-            if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
+            if event.type == pg.KEYDOWN and event.key == pg.K_SPACE: #スペースのキーが押されたときに
                 beam = Beam(bird)  # ビームクラスのインスタンスを生成する
                 
         screen.blit(bg_img, [0, 0])
@@ -170,14 +173,14 @@ def main():
         
         for i, bomb in enumerate(bombs):
             if beam is not None:
-                if bomb.rct.colliderect(beam.rct):
+                if bomb.rct.colliderect(beam.rct): #こうかとんが爆弾にぶつかった時の処理
                     bombs[i] = None
                     beam = None
-                    bird.change_img(6, screen)
+                    bird.change_img(6, screen) #こうかとんを６番の画像に切り替える
                     pg.display.update()              
 
-        key_lst = pg.key.get_pressed()
-        bird.update(key_lst, screen)
+        key_lst = pg.key.get_pressed() #キーが押されたとき
+        bird.update(key_lst, screen) #key_lstの情報をもとにこうかとんを動かす
         bombs = [bomb for bomb in bombs if bomb is not None]
         for bomb in bombs:
             bomb.update(screen)
