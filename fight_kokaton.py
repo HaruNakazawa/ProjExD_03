@@ -112,11 +112,18 @@ class Beam:
     こうかとんが放つビームに関するクラス
     """
     def __init__(self,bird:Bird):
-            self.img = pg.image.load(f"ex03/fig/baem.png") 
-            self.rct = self.img.get_rect()
-            self.rct.centerx = bird.rct.centerx 
-            self.rct.centery = bird.rct.ceentery
-            self.vx, self.vy = +5, 0
+        """
+        引数の基づきビームSurfaceを生成する
+        引数　bird　ビームを放つこうかとん
+        """
+        self.img = pg.image.load(f"ex03/fig/baem.png") 
+        self.rct = self.img.get_rect()
+        self.rct.centerx = bird.rct.centerx 
+        self.rct.centery = bird.rct.ceentery
+        self.vx, self.vy = +5, 0
+
+
+
 def main():
     pg.display.set_caption("たたかえ！こうかとん")
     screen = pg.display.set_mode((WIDTH, HEIGHT))    
@@ -130,6 +137,8 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 return
+            if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
+                Beam(bird)
         
         screen.blit(bg_img, [0, 0])
         
@@ -143,6 +152,7 @@ def main():
         key_lst = pg.key.get_pressed()
         bird.update(key_lst, screen)
         bomb.update(screen)
+        beam.update
         pg.display.update()
         tmr += 1
         clock.tick(50)
