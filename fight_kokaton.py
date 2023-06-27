@@ -158,7 +158,6 @@ def main():
                 pg.display.update()
                 time.sleep(1)
                 return
-            
         
         if beam is not None and bomb is not None:
             if bomb.rct.colliderect(beam.rct):
