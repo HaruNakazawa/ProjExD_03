@@ -122,6 +122,7 @@ class Beam:
         self.rct.left = bird.rct.right
         self.rct.centery = bird.rct.centery
         self.vx, self.vy = +5, 0
+        
     
     def update(self, screen: pg.Surface):
         """
